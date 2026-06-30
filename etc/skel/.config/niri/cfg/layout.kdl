@@ -1,0 +1,30 @@
+// ────────────── Layout ──────────────
+// https://github.com/YaLTeR/niri/wiki/Configuration:-Layout
+layout {
+    gaps 8
+    center-focused-column "never"
+
+    // Transparent so noctalia-shell can draw the wallpaper behind the columns.
+    background-color "transparent"
+
+    // Kiro blue accent on the focused column; muted on the rest.
+    focus-ring {
+        width 2
+        active-color "#7aa2f7"
+        inactive-color "#414868"
+    }
+    border {
+        off
+    }
+
+    // Cycle these widths with Mod+R / Mod+Shift+R.
+    preset-column-widths {
+        proportion 0.33333
+        proportion 0.5
+        proportion 0.66667
+    }
+
+    default-column-width { proportion 0.5; }
+
+    struts {}
+}

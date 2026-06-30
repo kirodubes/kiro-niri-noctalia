@@ -1,0 +1,16 @@
+// ────────────── Startup Applications ──────────────
+// niri does not process /etc/xdg/autostart, so everything starts here.
+// https://github.com/YaLTeR/niri/wiki/Configuration:-Miscellaneous#spawn-at-startup
+
+// The whole desktop: noctalia-shell (bar, launcher, lock, notifications,
+// wallpaper, control center, session menu, polkit agent via its plugin).
+spawn-sh-at-startup "qs -c noctalia-shell"
+
+// Create the XDG user dirs (Documents, Music, Pictures, …) on first login —
+// niri doesn't run the xdg-user-dirs autostart, so do it explicitly. Idempotent.
+spawn-at-startup "xdg-user-dirs-update"
+
+// Live ISO only: auto-launch the Calamares installer. Gated on the archiso
+// boot mount so it never fires on an installed system; kiro_final strips this
+// line on install.
+spawn-sh-at-startup "[ -d /run/archiso/bootmnt ] && calamares_polkit -d -style kvantum"

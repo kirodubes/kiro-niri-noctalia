@@ -1,0 +1,26 @@
+// ════════════════════════════════════════════════════════════════════════
+// Kiro niri baseline config  (config.kdl)
+// ════════════════════════════════════════════════════════════════════════
+// Target: niri (scrollable-tiling Wayland compositor). Config format: KDL.
+// Lives at: ~/.config/niri/config.kdl
+//
+// Desktop shell: noctalia-shell (Quickshell v4) — provides the bar, launcher,
+// lock screen, notifications, wallpaper, control center, session menu and
+// polkit agent. niri is only the compositor; everything else is noctalia,
+// driven over `qs -c noctalia-shell ipc call <module> <action>`.
+//
+// Modular: each concern lives in its own cfg/*.kdl file, pulled in below.
+// Modeled on CachyOS's niri+noctalia settings, carrying Kiro's SUPER-based
+// keybind philosophy and app defaults.
+//
+// Docs: https://github.com/YaLTeR/niri/wiki/Configuration:-Introduction
+// ────────────────────────────────────────────────────────────────────────
+
+include "./cfg/animation.kdl"
+include "./cfg/autostart.kdl"
+include "./cfg/keybinds.kdl"
+include "./cfg/input.kdl"
+include "./cfg/display.kdl"
+include "./cfg/layout.kdl"
+include "./cfg/rules.kdl"
+include "./cfg/misc.kdl"
