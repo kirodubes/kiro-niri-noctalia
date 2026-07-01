@@ -1,5 +1,17 @@
 # Changelog
 
+## 2026.07.01
+
+### What Changed
+- New sibling edition **`kiro-ohmyniri`** shipped (same niri compositor, kiro-hyprland's shell).
+  Declared reciprocal `conflicts=('kiro-ohmyniri')` in this package's PKGBUILD — both editions
+  ship the same `/etc/skel/.config/niri/**` paths and niri always reads
+  `~/.config/niri/config.kdl`, so they can never usefully coexist.
+
+### Files Modified
+- `CLAUDE.md` (sibling-edition note)
+- `KIROTUX-PKG-BUILD/kiro-niri/PKGBUILD` (`conflicts`)
+
 ## 2026.06.30
 
 ### What Changed

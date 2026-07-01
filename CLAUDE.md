@@ -38,6 +38,12 @@ via `nemesis_repo`. Full research + decisions live in the internal `Kiro-HQ/Kiro
 - Wallpaper is drawn by noctalia into niri's backdrop (`layer-rule … place-within-backdrop true`
   + `layout { background-color "transparent" }`) — no separate wallpaper daemon.
 
+## Sibling edition
+- **`kiro-ohmyniri`** — same compositor, kiro-hyprland's shell (waybar/mako/swaybg/rofi/gtklock)
+  instead of noctalia-shell. `conflicts=('kiro-ohmyniri')` here (reciprocal) — both ship the same
+  `/etc/skel/.config/niri/**` paths, and niri always reads `~/.config/niri/config.kdl`, so the
+  two editions can never usefully coexist. Pick one.
+
 ## Build / delivery
 - Source-of-truth for the config; delivered as the `kiro-niri` package via
   `../KIROTUX-PKG-BUILD/kiro-niri/build.sh` (public recipe → `~/EDU/nemesis_repo/`). After
