@@ -16,7 +16,8 @@ via `nemesis_repo`. Full research + decisions live in the internal `Kiro-HQ/Kiro
 - **Autostart:** `spawn-sh-at-startup "qs -c noctalia-shell"` (+ explicit `xdg-user-dirs-update`,
   + the archiso-gated Calamares line). niri does **not** process `/etc/xdg/autostart`.
 - **Theming:** noctalia owns runtime accent colours (matugen internally). Base GTK look + cursor
-  shipped via `etc/dconf/` (dark adw-gtk3, Bibata-Modern-Ice).
+  (dark adw-gtk3, Bibata-Modern-Ice) shipped via `/etc/dconf/`, owned by `kiro-wayland-dotfiles`
+  (this edition is a partial consumer — dconf only, no mako/hypr/waybar).
 - **Dependency note:** `noctalia-shell` (+ `noctalia-qs`) come from **chaotic-aur / cachyos**
   (both in Kiro's `pacman.conf`) — **do not** repackage them into `nemesis_repo`.
 

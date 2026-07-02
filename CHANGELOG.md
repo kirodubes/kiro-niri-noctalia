@@ -1,5 +1,18 @@
 # Changelog
 
+## 2026.07.02
+
+### What Changed
+- **Became a partial consumer of `kiro-wayland-dotfiles`, for dconf only.** Previously shipped its
+  own `/etc/dconf/profile/user` + `/etc/dconf/db/local.d/00-kiro.conf`, byte-identical to the
+  other 8 editions — a real pacman file-conflict when co-installed with any other Kiro Wayland
+  edition. Added `kiro-wayland-dotfiles` to `depends=()`; noctalia still owns everything else
+  (mako/hypr/waybar are not part of this edition).
+
+### Files Modified
+- `etc/dconf/` (removed, moved to `kiro-wayland-dotfiles`)
+- `CLAUDE.md` (theming bullet)
+
 ## 2026.07.01
 
 ### What Changed
