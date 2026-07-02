@@ -2,6 +2,12 @@
 // niri does not process /etc/xdg/autostart, so everything starts here.
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Miscellaneous#spawn-at-startup
 
+// niri is Smithay-based, not wlroots — unlike Hyprland/sway/wayfire/river/labwc/mango it has
+// no built-in XWayland integration. xwayland-satellite bridges any X11-only app (including
+// Calamares) onto niri's native Wayland socket at :0. Permanent, not installer-only — keep
+// running for the life of the session, same as xorg-xwayland on the wlroots editions.
+spawn-sh-at-startup "xwayland-satellite :0"
+
 // The whole desktop: noctalia-shell (bar, launcher, lock, notifications,
 // wallpaper, control center, session menu, polkit agent via its plugin).
 spawn-sh-at-startup "qs -c noctalia-shell"
