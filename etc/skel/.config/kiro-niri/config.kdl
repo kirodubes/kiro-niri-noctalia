@@ -2,7 +2,9 @@
 // Kiro niri baseline config  (config.kdl)
 // ════════════════════════════════════════════════════════════════════════
 // Target: niri (scrollable-tiling Wayland compositor). Config format: KDL.
-// Lives at: ~/.config/niri/config.kdl
+// Lives at: ~/.config/kiro-niri/config.kdl  (niri is pointed here by the
+// kiro-niri-session wrapper via NIRI_CONFIG; the sibling kiro-ohmyniri
+// edition uses ~/.config/kiro-ohmyniri/ the same way).
 //
 // Desktop shell: noctalia-shell (Quickshell v4) — provides the bar, launcher,
 // lock screen, notifications, wallpaper, control center, session menu and

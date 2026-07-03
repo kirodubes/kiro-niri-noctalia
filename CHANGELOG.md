@@ -1,5 +1,38 @@
 # Changelog
 
+## 2026.07.03
+
+### What Changed
+- **Own session entry + own config folder (`~/.config/kiro-niri/`).** kiro-niri and kiro-ohmyniri
+  both boot the upstream `niri.desktop` and shared `~/.config/niri/`, so switching editions
+  inherited the other's stale config — found live on picard, where a "Kiro Niri" login was running
+  ohmyniri's swaybg/variety stack instead of noctalia. Now this edition ships **`kiro-niri.desktop`**
+  ("Kiro Niri") → a **`kiro-niri-session`** wrapper that points niri at `~/.config/kiro-niri/config.kdl`
+  via **`NIRI_CONFIG`**, and the whole niri config tree moved from `etc/skel/.config/niri/` to
+  `etc/skel/.config/kiro-niri/` (relative `./cfg/*.kdl` includes come along untouched). The upstream
+  plain "Niri" greeter entry is hidden with a `NoDisplay=true` pacman hook (same pattern as kiro-mango)
+  so it can't be picked by mistake (it would read the now-unused `~/.config/niri/`).
+
+### Technical Details
+- `kiro-niri-session`: sets `NIRI_CONFIG` (both `export` and `systemctl --user set-environment`), then
+  `exec niri-session`. niri-session's own `systemctl --user import-environment` propagates it into
+  `niri.service`.
+- Hide hook + helper (`usr/bin/kiro-niri-hide-upstream-session`, `usr/share/libalpm/hooks/…`): `.install`
+  applies on first install (hook doesn't fire when niri is already present), hook re-applies after niri
+  upgrades, `post_remove` strips it back out.
+- Pairs with `archlinux-logout-gtk4` 26.07-07: `DESKTOP_SESSION=kiro-niri` now distinguishes the edition
+  directly, so its logout uses `niri msg action quit -s` (clean systemd session exit) with no runtime probe.
+
+### Files Modified
+- `etc/skel/.config/niri/` → `etc/skel/.config/kiro-niri/` (moved)
+- [etc/skel/.config/kiro-niri/config.kdl](etc/skel/.config/kiro-niri/config.kdl) (header path)
+- [usr/bin/kiro-niri-session](usr/bin/kiro-niri-session) (new)
+- [usr/share/wayland-sessions/kiro-niri.desktop](usr/share/wayland-sessions/kiro-niri.desktop) (new)
+- [usr/bin/kiro-niri-hide-upstream-session](usr/bin/kiro-niri-hide-upstream-session) (new)
+- [usr/share/libalpm/hooks/kiro-niri-hide-upstream-session.hook](usr/share/libalpm/hooks/kiro-niri-hide-upstream-session.hook) (new)
+- [../KIROTUX-PKG-BUILD/kiro-niri/kiro-niri.install](../KIROTUX-PKG-BUILD/kiro-niri/kiro-niri.install)
+- [../KIROTUX-PKG-BUILD/kiro-niri/PKGBUILD](../KIROTUX-PKG-BUILD/kiro-niri/PKGBUILD) (pkgrel 07 → 08)
+
 ## 2026.07.02
 
 ### What Changed
