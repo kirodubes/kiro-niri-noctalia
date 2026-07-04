@@ -2,6 +2,20 @@
 
 ## 2026.07.04
 
+### Shared noctalia config extracted to `kiro-noctalia`
+- Removed the `etc/skel/.config/noctalia/` folder from this package and added
+  `kiro-noctalia` to `depends=()`. noctalia reads the fixed path
+  `~/.config/noctalia/`, so the identical config shipped here and by
+  `kiro-hyprland-noctalia` caused a pacman file conflict on
+  `/etc/skel/.config/noctalia/settings.json` — the editions could not
+  co-install. The shared config now has a single owner, `kiro-noctalia`.
+- The niri compositor config (`~/.config/kiro-niri-noctalia/`), session, wrapper,
+  hide script/hook are unchanged and still shipped here; only the shared
+  `noctalia/` skel folder moved out. The golden copy at
+  `/usr/share/kiro/kiro-niri-noctalia/` now contains only this edition's config.
+- Files: removed `etc/skel/.config/noctalia/*`;
+  `../KIROTUX-PKG-BUILD/kiro-niri-noctalia/PKGBUILD` (depends + comment).
+
 ### What Changed
 - **Full namespace rename `kiro-niri` → `kiro-niri-noctalia`.** Establishes the `kiro-niri-<shell>`
   family convention (sibling `kiro-niri-mds`, niri + DankMaterialShell). The config folder, session,
