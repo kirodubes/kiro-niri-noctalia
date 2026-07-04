@@ -1,6 +1,6 @@
 # Re-hide upstream niri's plain "Niri" session after any niri install/upgrade
 # restores /usr/share/wayland-sessions/niri.desktop. Keeps "Kiro Niri" the only
-# selectable niri entry. See /usr/bin/kiro-niri-hide-upstream-session.
+# selectable niri entry. See /usr/bin/kiro-niri-noctalia-hide-upstream-session.
 [Trigger]
 Operation = Install
 Operation = Upgrade
@@ -10,4 +10,4 @@ Target = usr/share/wayland-sessions/niri.desktop
 [Action]
 Description = Hiding upstream Niri session (Kiro Niri is the supported entry)...
 When = PostTransaction
-Exec = /usr/bin/kiro-niri-hide-upstream-session
+Exec = /usr/bin/kiro-niri-noctalia-hide-upstream-session

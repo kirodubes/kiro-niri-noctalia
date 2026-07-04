@@ -11,7 +11,7 @@
 #   onto /usr/share/wayland-sessions/niri.desktop (owned by the niri
 #   package) when it is not already present.
 # Why:
-#   The Kiro edition reads ~/.config/kiro-niri/ via NIRI_CONFIG; the plain
+#   The Kiro edition reads ~/.config/kiro-niri-noctalia/ via NIRI_CONFIG; the plain
 #   "Niri" entry reads the (empty on a Kiro box) ~/.config/niri/, so picking
 #   it lands a blank default niri. A pacman hook re-runs this after every
 #   niri upgrade (which restores the file), so it cannot regress.
