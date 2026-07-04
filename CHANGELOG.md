@@ -1,5 +1,34 @@
 # Changelog
 
+## 2026.07.04
+
+### What Changed
+- **Full namespace rename `kiro-niri` → `kiro-niri-noctalia`.** Establishes the `kiro-niri-<shell>`
+  family convention (sibling `kiro-niri-mds`, niri + DankMaterialShell). The config folder, session,
+  wrapper, hide script and hook all move to the `kiro-niri-noctalia` namespace so this edition and
+  its niri siblings share no file paths and are co-installable. The SDDM session display name also
+  becomes **"Kiro Niri Noctalia"** (was "Kiro Niri"), matching the siblings "Kiro OhMyNiri" / "Kiro
+  Niri MDS".
+- The package is now `kiro-niri-noctalia` (`replaces=('kiro-niri')` migrates old installs). This
+  **GitHub repo keeps its `kiro-niri` name** — only the package + shipped paths were renamed.
+
+### Technical Details
+- `etc/skel/.config/kiro-niri/` → `etc/skel/.config/kiro-niri-noctalia/` (relative `./cfg/*.kdl`
+  includes come along untouched).
+- `usr/bin/kiro-niri-session` → `kiro-niri-noctalia-session` (`NIRI_CONFIG` →
+  `~/.config/kiro-niri-noctalia/config.kdl`).
+- `usr/bin/kiro-niri-hide-upstream-session` → `kiro-niri-noctalia-hide-upstream-session`;
+  hook renamed to match, its `Exec` updated.
+- `usr/share/wayland-sessions/kiro-niri.desktop` → `kiro-niri-noctalia.desktop` (`Exec` updated;
+  `Name=` changed "Kiro Niri" → "Kiro Niri Noctalia").
+
+### Files Modified
+- `etc/skel/.config/kiro-niri/` → `etc/skel/.config/kiro-niri-noctalia/` (renamed)
+- `usr/bin/kiro-niri-noctalia-session`, `usr/bin/kiro-niri-noctalia-hide-upstream-session` (renamed)
+- `usr/share/wayland-sessions/kiro-niri-noctalia.desktop` (renamed)
+- `usr/share/libalpm/hooks/kiro-niri-noctalia-hide-upstream-session.hook` (renamed)
+- `README.md`, `CLAUDE.md`
+
 ## 2026.07.03
 
 ### What Changed
