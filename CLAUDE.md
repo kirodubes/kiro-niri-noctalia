@@ -7,7 +7,7 @@ via `nemesis_repo`. Full research + decisions live in the internal `Kiro-HQ/Kiro
 
 ## Edition spec (the WM-variable matrix)
 - **Compositor:** niri (scrollable-tiling, Smithay-based — *not* wlroots).
-- **Config language:** KDL. `etc/skel/.config/niri/config.kdl` `include`s `cfg/*.kdl`
+- **Config language:** KDL. `etc/skel/.config/kiro-niri-noctalia/config.kdl` `include`s `cfg/*.kdl`
   (`animation, autostart, keybinds, input, display, layout, rules, misc`). Edit the `cfg/` file,
   not a monolith.
 - **Desktop shell:** **noctalia-shell** (Quickshell v4) — bar, launcher, lock, notifications,
@@ -41,9 +41,11 @@ via `nemesis_repo`. Full research + decisions live in the internal `Kiro-HQ/Kiro
 
 ## Sibling edition
 - **`kiro-ohmyniri`** — same compositor, kiro-hyprland's shell (waybar/mako/swaybg/rofi/gtklock)
-  instead of noctalia-shell. `conflicts=('kiro-ohmyniri')` here (reciprocal) — both ship the same
-  `/etc/skel/.config/niri/**` paths, and niri always reads `~/.config/niri/config.kdl`, so the
-  two editions can never usefully coexist. Pick one.
+  instead of noctalia-shell. **Co-installable** — each edition ships its own namespaced config
+  folder (`~/.config/kiro-niri-noctalia/` vs `~/.config/kiro-ohmyniri/`) and its own session that
+  points niri there via `NIRI_CONFIG`, so there are no shared paths. The old reciprocal
+  `conflicts=('kiro-ohmyniri')` was **dropped** (2026.07.03); both can be installed and picked
+  per-login.
 
 ## Build / delivery
 - Source-of-truth for the config; delivered as the `kiro-niri-noctalia` package via

@@ -14,8 +14,9 @@ over `qs -c noctalia-shell ipc call …`. niri is the compositor; noctalia is ev
 - `etc/skel/.config/kiro-niri-noctalia/` — the niri config, modular: `config.kdl` `include`s `cfg/*.kdl`
   (`keybinds`, `input`, `layout`, `rules`, `misc`, `animation`, `autostart`, `display`), plus a
   `keybindings.txt` cheat sheet and the Kiro wallpaper.
-- `etc/skel/.config/noctalia/plugins.json` — enables the noctalia polkit-agent plugin.
-- `etc/dconf/` — system-wide dark GTK + Kiro cursor defaults.
+The noctalia-shell config (`~/.config/noctalia/`) and the system-wide dark GTK + Kiro cursor dconf
+defaults are **not** shipped here — they come from the `kiro-noctalia` and `kiro-wayland-dotfiles`
+dependencies respectively.
 
 ## How to install
 

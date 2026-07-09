@@ -1,5 +1,22 @@
 # Changelog
 
+## 2026.07.09
+
+### Docs: fix stale config path, ship-list, and dropped-conflict claim
+
+**What Changed**
+- **CLAUDE.md config path** updated `etc/skel/.config/niri/` → `kiro-niri-noctalia/` (the folder
+  was namespaced on 2026.07.04).
+- **CLAUDE.md "Sibling edition"** rewritten: it claimed a reciprocal
+  `conflicts=('kiro-ohmyniri')` and that the two editions "can never coexist" — but the conflict
+  was **dropped** (2026.07.03) and both are co-installable via namespaced folders + `NIRI_CONFIG`.
+- **README "What it ships"** dropped `etc/skel/.config/noctalia/plugins.json` (moved to
+  `kiro-noctalia`) and `etc/dconf/` (moved to `kiro-wayland-dotfiles`) — neither is in this
+  package; noted they come from those dependencies.
+
+**Files Modified**
+- `README.md`, `CLAUDE.md`
+
 ## 2026.07.07
 
 ### Keyboard: US default + normalized Alt+Shift toggle
