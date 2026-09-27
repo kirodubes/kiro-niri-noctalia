@@ -1,7 +1,8 @@
 ###############################################################################
 #  KEYBINDINGS — niri
 #  Source: etc/skel/.config/niri/cfg/keybinds.kdl
-#  Generated: 2026.06.30 — DO NOT EDIT BY HAND
+#  Generated: 2026.06.30
+#  Reference for the default bindings. Changed yours? Edit this file to match.
 #  Shell: noctalia-shell (bar / launcher / lock / wallpaper / settings)
 ###############################################################################
 
