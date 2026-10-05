@@ -1,5 +1,18 @@
 # Changelog
 
+## 2026.10.05
+
+### What Changed
+- **`QT_STYLE_OVERRIDE "kvantum"` moved into the `environment { }` block** of `cfg/misc.kdl`. The Wayland ISOs keep only
+  `EDITOR` in `/etc/environment` from now on (`GTK_THEME` and `BROWSER` there caused transparent GTK 4 windows and a
+  browser default that couldn't be changed); the Qt variables belong to the session.
+
+### Technical Details
+- Same `KEY "value"` form as the existing lines; not validated with `niri validate` (no niri install at hand).
+
+### Files Modified
+- `etc/skel/.config/kiro-niri-noctalia/cfg/misc.kdl`
+
 ## 2026.09.27
 
 ### What Changed
