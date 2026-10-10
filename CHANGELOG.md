@@ -4,9 +4,18 @@
 
 ### What Changed
 - Source repo moved from `~/KIROTUX/kiro-niri-noctalia` to `~/KIRO/kiro-niri-noctalia` and its recipe to `~/KIRO-PKG-BUILD-APPS/kiro-niri-noctalia`: ATT installs it from nemesis_repo, so it is a Kiro package, not KiroTux-only. Paths and links in the docs follow. The package itself is unchanged.
+- **The installer's Next button can be clicked again:** Calamares now opens as a floating 1024x900 window. In a QEMU VM the Next button ignored mouse clicks; floating the window fixed it.
+
+### Technical Details
+- Calamares runs on XWayland (`QT_QPA_PLATFORM=xcb` from `calamares_polkit`). xwayland-satellite kept the X
+  screen at 1698x952 after the VM display grew to 1920x1080, so the bottom of the 1020 px tall tiled window,
+  where the buttons are, sat outside the X screen and received no clicks. New `window-rule` on
+  `app-id="^calamares$"`: `open-floating true` + fixed `default-column-width`/`default-window-height`.
+  Checked with `niri validate` on niri 26.04.
 
 ### Files Modified
 - `CLAUDE.md`, `CHANGELOG.md`
+- `etc/skel/.config/kiro-niri-noctalia/cfg/rules.kdl`
 
 ## 2026.10.05
 

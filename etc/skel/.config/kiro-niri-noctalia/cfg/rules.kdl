@@ -25,6 +25,17 @@ window-rule {
     open-focused false
 }
 
+// Calamares: float at 1024x900. It runs on XWayland (xcb), and xwayland-satellite can
+// keep a stale X screen size after the display resizes (seen in a QEMU VM: 1698x952 on
+// a 1920x1080 output). A full-height tiled installer then reaches past the X screen and
+// its Next button ignores clicks.
+window-rule {
+    match app-id="^calamares$"
+    open-floating true
+    default-column-width { fixed 1024; }
+    default-window-height { fixed 900; }
+}
+
 // noctalia draws the wallpaper into niri's backdrop (shows through the overview).
 layer-rule {
     match namespace="^noctalia-wallpaper*"
