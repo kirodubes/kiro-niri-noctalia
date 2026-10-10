@@ -49,6 +49,6 @@ via `nemesis_repo`. Full research + decisions live in the internal `Kiro-HQ/Kiro
 
 ## Build / delivery
 - Source-of-truth for the config; delivered as the `kiro-niri-noctalia` package via
-  `../KIROTUX-PKG-BUILD/kiro-niri-noctalia/build.sh` (public recipe → `~/EDU/nemesis_repo/`). After
+  `~/KIRO-PKG-BUILD-APPS/kiro-niri-noctalia/build.sh` (public recipe → `~/EDU/nemesis_repo/`). After
   editing here: rebuild the package (recipe `build.sh`), then the ISO to test a fresh install.
-- See [../CLAUDE.md](../CLAUDE.md) for the full KIROTUX delivery architecture.
+- See [KIROTUX/CLAUDE.md](../../KIROTUX/CLAUDE.md) for the full KIROTUX delivery architecture.
