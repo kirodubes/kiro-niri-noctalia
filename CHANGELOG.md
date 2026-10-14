@@ -4,10 +4,12 @@
 
 ### What Changed
 - Moved the edition to noctalia v5. noctalia-shell v4 (Quickshell) broke on Qt 6.12: noctalia-qs was built against Qt 6.11, so every themed widget got an undefined colour and the bar rendered as empty pills. v4 is unmaintained upstream and [cachyos] now ships v5 under the noctalia-shell name without shell.qml. Native noctalia v5.2.1 from Arch [extra] was live-tested on a real-metal test box and works.
+- `Ctrl+Alt+H` opens Kirotux Niri Premium, as on kiro-niri-dms and kiro-hyprland-noctalia. Without the app it shows a notification with a link to get it.
 
 ### Technical Details
 - All 20 noctalia key bindings in `cfg/keybinds.kdl` now call `noctalia msg` (panel-toggle launcher/control-center/wallpaper, settings-toggle, session lock, volume-up/-down/-mute, mic-mute, media next/previous/toggle, brightness-up/-down).
 - `cfg/autostart.kdl` starts `noctalia`. The existing `debug { honor-xdg-activation-with-invalid-serial }` and the `^noctalia-wallpaper` backdrop layer-rule already match v5. `niri validate` passes. Recipe depends on `noctalia`.
+- Premium bind: same `spawn-sh` line as kiro-niri-dms (`command -v kirotux-niri-premium` → run it, else `notify-send` with a Get KiroTux action). Added to `keybindings.txt` too. `niri validate` passes.
 
 ### Files Modified
 - etc/skel/.config/kiro-niri-noctalia/cfg/keybinds.kdl, cfg/autostart.kdl, cfg/layout.kdl, config.kdl, keybindings.txt
