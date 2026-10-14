@@ -1,7 +1,7 @@
 binds {
     // ────────────── Keybindings ──────────────
     // niri docs:     https://github.com/YaLTeR/niri/wiki/Configuration:-Key-Bindings
-    // noctalia IPC:   qs -c noctalia-shell ipc call <module> <action>
+    // noctalia IPC:   noctalia msg <command>
     // Mod = Super.   Every app bind carries a hotkey-overlay-title so niri's
     // built-in overlay (Mod+Shift+/) is a self-documenting cheat sheet.
 
@@ -17,15 +17,15 @@ binds {
     Mod+Shift+X                         hotkey-overlay-title="Power menu: kiro-powermenu" { spawn "kiro-powermenu"; }
     Ctrl+Alt+K                          hotkey-overlay-title="Logout menu: archlinux-logout" { spawn "archlinux-logout"; }
 
-    // ─── noctalia-shell (bar / launcher / lock / wallpaper / settings) ───
-    Mod+D                               hotkey-overlay-title="App launcher: noctalia" { spawn-sh "qs -c noctalia-shell ipc call launcher toggle"; }
-    Mod+Space                           hotkey-overlay-title="App launcher: noctalia" { spawn-sh "qs -c noctalia-shell ipc call launcher toggle"; }
-    Mod+Ctrl+Return                     hotkey-overlay-title="App launcher: noctalia" { spawn-sh "qs -c noctalia-shell ipc call launcher toggle"; }
-    Mod+S                               hotkey-overlay-title="Control center: noctalia" { spawn-sh "qs -c noctalia-shell ipc call controlCenter toggle"; }
-    Mod+Shift+S                         hotkey-overlay-title="Settings: noctalia" { spawn-sh "qs -c noctalia-shell ipc call settings toggle"; }
+    // ─── noctalia (bar / launcher / lock / wallpaper / settings) ───
+    Mod+D                               hotkey-overlay-title="App launcher: noctalia" { spawn-sh "noctalia msg panel-toggle launcher"; }
+    Mod+Space                           hotkey-overlay-title="App launcher: noctalia" { spawn-sh "noctalia msg panel-toggle launcher"; }
+    Mod+Ctrl+Return                     hotkey-overlay-title="App launcher: noctalia" { spawn-sh "noctalia msg panel-toggle launcher"; }
+    Mod+S                               hotkey-overlay-title="Control center: noctalia" { spawn-sh "noctalia msg panel-toggle control-center"; }
+    Mod+Shift+S                         hotkey-overlay-title="Settings: noctalia" { spawn-sh "noctalia msg settings-toggle"; }
     Mod+Ctrl+S                          hotkey-overlay-title="Show keybindings: kiro-keybindings" { spawn "kiro-keybindings"; }
-    Mod+Alt+L                           hotkey-overlay-title="Lock screen: noctalia" { spawn-sh "qs -c noctalia-shell ipc call lockScreen lock"; }
-    Mod+Shift+W                         hotkey-overlay-title="Wallpaper selector: noctalia" { spawn-sh "qs -c noctalia-shell ipc call wallpaper toggle"; }
+    Mod+Alt+L                           hotkey-overlay-title="Lock screen: noctalia" { spawn-sh "noctalia msg session lock"; }
+    Mod+Shift+W                         hotkey-overlay-title="Wallpaper selector: noctalia" { spawn-sh "noctalia msg panel-toggle wallpaper"; }
 
     // ─── CTRL+ALT app launchers (Kiro scheme) ───
     Ctrl+Alt+A                          hotkey-overlay-title="Alacritty tweak tool" { spawn "alacritty-tweak-tool"; }
@@ -41,7 +41,7 @@ binds {
     Ctrl+Alt+O                          hotkey-overlay-title="Opera" { spawn "opera"; }
     Ctrl+Alt+P                          hotkey-overlay-title="Package manager: pamac" { spawn "pamac-manager"; }
     Ctrl+Alt+Q                          hotkey-overlay-title="Alacritty tweak tool" { spawn "alacritty-tweak-tool"; }
-    Ctrl+Alt+R                          hotkey-overlay-title="Lock screen: noctalia" { spawn-sh "qs -c noctalia-shell ipc call lockScreen lock"; }
+    Ctrl+Alt+R                          hotkey-overlay-title="Lock screen: noctalia" { spawn-sh "noctalia msg session lock"; }
     Ctrl+Alt+Return                     hotkey-overlay-title="Terminal: Alacritty" { spawn "alacritty"; }
     Ctrl+Alt+T                          hotkey-overlay-title="Terminal: Alacritty" { spawn "alacritty"; }
     Ctrl+Alt+S                          hotkey-overlay-title="Fish tweak tool" { spawn "fish-tweak-tool"; }
@@ -62,20 +62,20 @@ binds {
     Mod+F8                              hotkey-overlay-title="File manager: Thunar" { spawn "thunar"; }
     Mod+F9                              hotkey-overlay-title="Virt-manager" { spawn "virt-manager"; }
     Mod+F10                             hotkey-overlay-title="Spotify" { spawn "spotify"; }
-    Mod+F11                             hotkey-overlay-title="App launcher: noctalia" { spawn-sh "qs -c noctalia-shell ipc call launcher toggle"; }
-    Mod+F12                             hotkey-overlay-title="App launcher: noctalia" { spawn-sh "qs -c noctalia-shell ipc call launcher toggle"; }
+    Mod+F11                             hotkey-overlay-title="App launcher: noctalia" { spawn-sh "noctalia msg panel-toggle launcher"; }
+    Mod+F12                             hotkey-overlay-title="App launcher: noctalia" { spawn-sh "noctalia msg panel-toggle launcher"; }
 
     // ─── Media keys (routed through noctalia, work while locked) ───
-    XF86AudioRaiseVolume                allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call volume increase"; }
-    XF86AudioLowerVolume                allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call volume decrease"; }
-    XF86AudioMute                       allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call volume muteOutput"; }
-    XF86AudioMicMute                    allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call volume muteInput"; }
-    XF86AudioNext                       allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call media next"; }
-    XF86AudioPrev                       allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call media previous"; }
-    XF86AudioPlay                       allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call media playPause"; }
-    XF86AudioPause                      allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call media playPause"; }
-    XF86MonBrightnessUp                 allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call brightness increase"; }
-    XF86MonBrightnessDown               allow-when-locked=true { spawn-sh "qs -c noctalia-shell ipc call brightness decrease"; }
+    XF86AudioRaiseVolume                allow-when-locked=true { spawn-sh "noctalia msg volume-up"; }
+    XF86AudioLowerVolume                allow-when-locked=true { spawn-sh "noctalia msg volume-down"; }
+    XF86AudioMute                       allow-when-locked=true { spawn-sh "noctalia msg volume-mute"; }
+    XF86AudioMicMute                    allow-when-locked=true { spawn-sh "noctalia msg mic-mute"; }
+    XF86AudioNext                       allow-when-locked=true { spawn-sh "noctalia msg media next"; }
+    XF86AudioPrev                       allow-when-locked=true { spawn-sh "noctalia msg media previous"; }
+    XF86AudioPlay                       allow-when-locked=true { spawn-sh "noctalia msg media toggle"; }
+    XF86AudioPause                      allow-when-locked=true { spawn-sh "noctalia msg media toggle"; }
+    XF86MonBrightnessUp                 allow-when-locked=true { spawn-sh "noctalia msg brightness-up"; }
+    XF86MonBrightnessDown               allow-when-locked=true { spawn-sh "noctalia msg brightness-down"; }
 
     // ─── Window focus & movement (niri column model) ───
     Mod+Q                               { close-window; }

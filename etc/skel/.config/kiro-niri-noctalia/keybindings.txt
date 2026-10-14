@@ -3,7 +3,7 @@
 #  Source: etc/skel/.config/niri/cfg/keybinds.kdl
 #  Generated: 2026.06.30
 #  Reference for the default bindings. Changed yours? Edit this file to match.
-#  Shell: noctalia-shell (bar / launcher / lock / wallpaper / settings)
+#  Shell: noctalia (bar / launcher / lock / wallpaper / settings)
 ###############################################################################
 
 ── 1. Applications & Launchers ────────────────────────────────────────────────

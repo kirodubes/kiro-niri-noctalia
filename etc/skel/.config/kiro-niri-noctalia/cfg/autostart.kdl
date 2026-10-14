@@ -8,9 +8,9 @@
 // running for the life of the session, same as xorg-xwayland on the wlroots editions.
 spawn-sh-at-startup "xwayland-satellite :0"
 
-// The whole desktop: noctalia-shell (bar, launcher, lock, notifications,
-// wallpaper, control center, session menu, polkit agent via its plugin).
-spawn-sh-at-startup "qs -c noctalia-shell"
+// The whole desktop: noctalia v5 (bar, launcher, lock, notifications,
+// wallpaper, control center, session menu, built-in polkit agent).
+spawn-sh-at-startup "noctalia"
 
 // Create the XDG user dirs (Documents, Music, Pictures, …) on first login —
 // niri doesn't run the xdg-user-dirs autostart, so do it explicitly. Idempotent.

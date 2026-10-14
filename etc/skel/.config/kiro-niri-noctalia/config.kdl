@@ -6,10 +6,10 @@
 // kiro-niri-session wrapper via NIRI_CONFIG; the sibling kiro-ohmyniri
 // edition uses ~/.config/kiro-ohmyniri/ the same way).
 //
-// Desktop shell: noctalia-shell (Quickshell v4) — provides the bar, launcher,
+// Desktop shell: noctalia v5 (native, [extra]/noctalia) — provides the bar, launcher,
 // lock screen, notifications, wallpaper, control center, session menu and
 // polkit agent. niri is only the compositor; everything else is noctalia,
-// driven over `qs -c noctalia-shell ipc call <module> <action>`.
+// driven over `noctalia msg <command>`.
 //
 // Modular: each concern lives in its own cfg/*.kdl file, pulled in below.
 // Modeled on CachyOS's niri+noctalia settings, carrying Kiro's SUPER-based

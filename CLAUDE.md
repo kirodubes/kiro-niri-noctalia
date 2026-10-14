@@ -10,16 +10,16 @@ via `nemesis_repo`. Full research + decisions live in the internal `Kiro-HQ/Kiro
 - **Config language:** KDL. `etc/skel/.config/kiro-niri-noctalia/config.kdl` `include`s `cfg/*.kdl`
   (`animation, autostart, keybinds, input, display, layout, rules, misc`). Edit the `cfg/` file,
   not a monolith.
-- **Desktop shell:** **noctalia-shell** (Quickshell v4) — bar, launcher, lock, notifications,
-  wallpaper, control center, session menu, polkit agent (via its plugin). Driven over
-  `qs -c noctalia-shell ipc call <module> <action>`. niri is only the compositor.
-- **Autostart:** `spawn-sh-at-startup "qs -c noctalia-shell"` (+ explicit `xdg-user-dirs-update`,
+- **Desktop shell:** **noctalia v5** (native, `[extra]/noctalia`) — bar, launcher, lock, notifications,
+  wallpaper, control center, session menu, built-in polkit agent. Driven over
+  `noctalia msg <command>`. (Moved off v4/Quickshell 2026-10-14: it broke on Qt 6.12.) niri is only the compositor.
+- **Autostart:** `spawn-sh-at-startup "noctalia"` (+ explicit `xdg-user-dirs-update`,
   + the archiso-gated Calamares line). niri does **not** process `/etc/xdg/autostart`.
 - **Theming:** noctalia owns runtime accent colours (matugen internally). Base GTK look + cursor
   (dark adw-gtk3, Bibata-Modern-Ice) shipped via `/etc/dconf/`, owned by `kiro-wayland-dotfiles`
   (this edition is a partial consumer — dconf only, no mako/hypr/waybar).
-- **Dependency note:** `noctalia-shell` (+ `noctalia-qs`) come from **chaotic-aur / cachyos**
-  (both in Kiro's `pacman.conf`) — **do not** repackage them into `nemesis_repo`.
+- **Dependency note:** `noctalia` (v5) comes from Arch **`[extra]`** — **do not** repackage it into
+  `nemesis_repo`. Never depend on `noctalia-shell`: [cachyos] ships v5 under that name without `shell.qml`.
 
 ## Keybindings
 - niri-native window/column/workspace management (column model: `focus-column-*`,
@@ -41,7 +41,7 @@ via `nemesis_repo`. Full research + decisions live in the internal `Kiro-HQ/Kiro
 
 ## Sibling edition
 - **`kiro-ohmyniri`** — same compositor, kiro-hyprland's shell (waybar/mako/swaybg/rofi/gtklock)
-  instead of noctalia-shell. **Co-installable** — each edition ships its own namespaced config
+  instead of noctalia. **Co-installable** — each edition ships its own namespaced config
   folder (`~/.config/kiro-niri-noctalia/` vs `~/.config/kiro-ohmyniri/`) and its own session that
   points niri there via `NIRI_CONFIG`, so there are no shared paths. The old reciprocal
   `conflicts=('kiro-ohmyniri')` was **dropped** (2026.07.03); both can be installed and picked

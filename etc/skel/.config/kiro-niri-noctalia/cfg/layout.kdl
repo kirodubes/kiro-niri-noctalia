@@ -4,7 +4,7 @@ layout {
     gaps 8
     center-focused-column "never"
 
-    // Transparent so noctalia-shell can draw the wallpaper behind the columns.
+    // Transparent so noctalia can draw the wallpaper behind the columns.
     background-color "transparent"
 
     // Catppuccin Mocha accent (mauve) on the focused column; muted on the rest.

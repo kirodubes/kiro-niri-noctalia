@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Kiro Niri Noctalia
-Comment=Kiro niri edition (niri + noctalia-shell)
+Comment=Kiro niri edition (niri + noctalia)
 Exec=kiro-niri-noctalia-session
 Type=Application
 DesktopNames=niri
