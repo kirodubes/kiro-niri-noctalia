@@ -6,17 +6,20 @@
 - Moved the edition to noctalia v5. noctalia-shell v4 (Quickshell) broke on Qt 6.12: noctalia-qs was built against Qt 6.11, so every themed widget got an undefined colour and the bar rendered as empty pills. v4 is unmaintained upstream and [cachyos] now ships v5 under the noctalia-shell name without shell.qml. Native noctalia v5.2.1 from Arch [extra] was live-tested on a real-metal test box and works.
 - `Ctrl+Alt+H` opens Kirotux Niri Premium, as on kiro-niri-dms and kiro-hyprland-noctalia. Without the app it shows a notification with a link to get it.
 - `config.kdl` loads Kirotux Niri Premium's `kirotux-appearance.kdl` as its last line, as on kiro-niri-dms. The app's look changes now apply straight away; before, it first asked to add the line to your config.
+- **The installer tiles again on real hardware.** Calamares now floats (1024x900) only when the live ISO runs in a virtual machine, where the floating window is still needed to keep the Next button clickable. On real metal it opens as a normal tiled window.
 
 ### Technical Details
 - All 20 noctalia key bindings in `cfg/keybinds.kdl` now call `noctalia msg` (panel-toggle launcher/control-center/wallpaper, settings-toggle, session lock, volume-up/-down/-mute, mic-mute, media next/previous/toggle, brightness-up/-down).
 - `cfg/autostart.kdl` starts `noctalia`. The existing `debug { honor-xdg-activation-with-invalid-serial }` and the `^noctalia-wallpaper` backdrop layer-rule already match v5. `niri validate` passes. Recipe depends on `noctalia`.
 - Premium bind: same `spawn-sh` line as kiro-niri-dms (`command -v kirotux-niri-premium` → run it, else `notify-send` with a Get KiroTux action). Added to `keybindings.txt` too. `niri validate` passes.
 - Premium include: `include optional=true "kirotux-appearance.kdl"` with niri-dms's comment block, kept LAST so the app's values override the edition's. `optional=true` (niri 26.04+) makes a missing file fine. Matches `knp_niri.INCLUDE_LINE` exactly, so `include_present()` sees it.
+- The Calamares `window-rule` moved from `cfg/rules.kdl` to the new `cfg/calamares-vm.rule` (no `.kdl`, so niri never reads it on its own). `rules.kdl` now has `include optional=true "calamares-vm.kdl"`. The live-ISO autostart line runs `systemd-detect-virt -q` and, in a VM, copies the rule to `cfg/calamares-vm.kdl`, then waits `sleep 1` while niri hot-reloads the new include before it starts `calamares_polkit`. Tested live on a real-metal box: niri accepts the include while the file is missing, picks the file up when it appears at runtime (next Calamares opens floating 1024x900), and with no VM the installer tiles. The line stays a single line inside the "Live ISO only" comment block, so kiro_final's `sed '/Live ISO only/,/calamares_polkit/d'` still strips it on install. `niri validate` passes with and without the file.
 
 ### Files Modified
 - etc/skel/.config/kiro-niri-noctalia/cfg/keybinds.kdl, cfg/autostart.kdl, cfg/layout.kdl, config.kdl, keybindings.txt
 - usr/share/wayland-sessions/kiro-niri-noctalia.desktop
 - README.md, CLAUDE.md
+- etc/skel/.config/kiro-niri-noctalia/cfg/rules.kdl, cfg/autostart.kdl, cfg/calamares-vm.rule (new)
 
 ## 2026.10.10
 
