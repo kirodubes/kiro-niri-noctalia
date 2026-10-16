@@ -3,6 +3,9 @@
 ## 2026.10.16
 
 ### What Changed
+- **The installer's buttons are reachable in a small VM window.** In a virtual machine Calamares floated at a fixed
+  1024x900, so on a screen less than ~934 px high (QEMU 1280x800) its Back/Next buttons sat off-screen. It now opens
+  85% of the screen high (651 px on 800).
 - **Your installer keyboard layout is used on first login.** The layout you pick in the installer now replaces the
   shipped `us,be` in your niri config, as on kiro-niri-dms. A layout you set yourself is never overwritten.
 - **Qt apps start in the dark Kvantum theme** (KvGnomeDark) unless you picked another installed Kvantum theme.
@@ -10,6 +13,10 @@
   editions.
 
 ### Technical Details
+- `cfg/calamares-vm.rule`: `default-window-height { fixed 900; }` → `{ proportion 0.85; }`; width stays `fixed 1024`.
+  0.85 of a 1080-px output is ~918 px, still inside the stale 952-px X screen the rule was written for. Tested live
+  in QEMU (1280x800): Calamares opens 1024x651 at y=92, fully on screen. `niri validate` passes with the rule on.
+  Comment in `cfg/autostart.kdl` updated. Only the live ISO uses this file.
 - `cfg/autostart.kdl`: `spawn-at-startup "kiro-kvantum-default"` (from kiro-wayland-dotfiles) and
   `spawn-sh-at-startup "~/.config/kiro-niri-noctalia/scripts/keyboard-from-installer.sh"`, both copied from
   kiro-niri-dms.
@@ -21,6 +28,7 @@
 - Only `/etc/skel` changes: existing users keep their own config.
 
 ### Files Modified
+- `etc/skel/.config/kiro-niri-noctalia/cfg/calamares-vm.rule`
 - `etc/skel/.config/kiro-niri-noctalia/cfg/autostart.kdl`
 - `etc/skel/.config/kiro-niri-noctalia/cfg/keybinds.kdl`
 - `etc/skel/.config/kiro-niri-noctalia/scripts/keyboard-from-installer.sh` (new)
