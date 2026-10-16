@@ -1,5 +1,31 @@
 # Changelog
 
+## 2026.10.16
+
+### What Changed
+- **Your installer keyboard layout is used on first login.** The layout you pick in the installer now replaces the
+  shipped `us,be` in your niri config, as on kiro-niri-dms. A layout you set yourself is never overwritten.
+- **Qt apps start in the dark Kvantum theme** (KvGnomeDark) unless you picked another installed Kvantum theme.
+- **Super + E and Super + F2 open Sublime Text** (was VS Code, which isn't on the ISO), matching the other KiroTux
+  editions.
+
+### Technical Details
+- `cfg/autostart.kdl`: `spawn-at-startup "kiro-kvantum-default"` (from kiro-wayland-dotfiles) and
+  `spawn-sh-at-startup "~/.config/kiro-niri-noctalia/scripts/keyboard-from-installer.sh"`, both copied from
+  kiro-niri-dms.
+- `scripts/keyboard-from-installer.sh` (new, 0755): kiro-niri-dms's script with this edition's folder. It reads
+  `XKBLAYOUT`/`XKBVARIANT` from `/etc/vconsole.conf` and replaces only the untouched shipped `layout "us,be"` line; no
+  stamp, so it survives `skell` (the kiro-niri-dms a613702 fix). Tested with a fake vconsole: Belgian → `layout "be"`,
+  a user-edited line stays, the live ISO (no XKBLAYOUT) changes nothing.
+- `cfg/keybinds.kdl`: Mod+E and Mod+F2 spawn `subl`. `niri validate` passes.
+- Only `/etc/skel` changes: existing users keep their own config.
+
+### Files Modified
+- `etc/skel/.config/kiro-niri-noctalia/cfg/autostart.kdl`
+- `etc/skel/.config/kiro-niri-noctalia/cfg/keybinds.kdl`
+- `etc/skel/.config/kiro-niri-noctalia/scripts/keyboard-from-installer.sh` (new)
+- `CHANGELOG.md`
+
 ## 2026.10.14
 
 ### What Changed

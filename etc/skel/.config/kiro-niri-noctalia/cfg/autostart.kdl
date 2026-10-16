@@ -12,6 +12,15 @@ spawn-sh-at-startup "xwayland-satellite :0"
 // wallpaper, control center, session menu, built-in polkit agent).
 spawn-sh-at-startup "noctalia"
 
+// Qt look: KvGnomeDark (matches adw-gtk3-dark) unless the user picked an installed Kvantum theme.
+// The helper comes from kiro-wayland-dotfiles (a dependency).
+spawn-at-startup "kiro-kvantum-default"
+
+// First login of an installed system: use the keyboard layout picked in the installer
+// (/etc/vconsole.conf XKBLAYOUT/XKBVARIANT) instead of the us,be default in cfg/input.kdl.
+// No-op on the live ISO and when the user already changed the layout.
+spawn-sh-at-startup "~/.config/kiro-niri-noctalia/scripts/keyboard-from-installer.sh"
+
 // Create the XDG user dirs (Documents, Music, Pictures, …) on first login —
 // niri doesn't run the xdg-user-dirs autostart, so do it explicitly. Idempotent.
 spawn-at-startup "xdg-user-dirs-update"

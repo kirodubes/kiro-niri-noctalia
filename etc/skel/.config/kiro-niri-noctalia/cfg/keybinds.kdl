@@ -10,7 +10,7 @@ binds {
     // ─── Apps & session (Kiro scheme) ───
     Mod+Return                          hotkey-overlay-title="Terminal: Alacritty" { spawn "alacritty"; }
     Mod+Shift+Return                    hotkey-overlay-title="File manager: Thunar" { spawn "thunar"; }
-    Mod+E                               hotkey-overlay-title="Code editor: VS Code" { spawn "code"; }
+    Mod+E                               hotkey-overlay-title="Code editor: Sublime Text" { spawn "subl"; }
     Mod+B                               hotkey-overlay-title="Browser: Firefox" { spawn "firefox"; }
     Mod+V                               hotkey-overlay-title="Volume control: pavucontrol" { spawn "pavucontrol"; }
     Mod+X                               hotkey-overlay-title="Logout menu: archlinux-logout" { spawn "archlinux-logout"; }
@@ -54,7 +54,7 @@ binds {
 
     // ─── Function-key app launchers (Kiro scheme) ───
     Mod+F1                              hotkey-overlay-title="Firefox" { spawn "firefox"; }
-    Mod+F2                              hotkey-overlay-title="Code editor: VS Code" { spawn "code"; }
+    Mod+F2                              hotkey-overlay-title="Code editor: Sublime Text" { spawn "subl"; }
     Mod+F3                              hotkey-overlay-title="Inkscape" { spawn "inkscape"; }
     Mod+F4                              hotkey-overlay-title="GIMP" { spawn "gimp"; }
     Mod+F5                              hotkey-overlay-title="Meld" { spawn "meld"; }
