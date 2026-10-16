@@ -11,6 +11,8 @@
 - **Qt apps start in the dark Kvantum theme** (KvGnomeDark) unless you picked another installed Kvantum theme.
 - **Super + E and Super + F2 open Sublime Text** (was VS Code, which isn't on the ISO), matching the other KiroTux
   editions.
+- **The keybindings reference names this edition.** The header of `keybindings.txt` said `niri` with the old
+  `~/.config/niri` source path and a June date; it now reads "Kiro Niri (Noctalia)" with the real source file.
 
 ### Technical Details
 - `cfg/calamares-vm.rule`: `default-window-height { fixed 900; }` → `{ proportion 0.85; }`; width stays `fixed 1024`.
@@ -25,6 +27,8 @@
   stamp, so it survives `skell` (the kiro-niri-dms a613702 fix). Tested with a fake vconsole: Belgian → `layout "be"`,
   a user-edited line stays, the live ISO (no XKBLAYOUT) changes nothing.
 - `cfg/keybinds.kdl`: Mod+E and Mod+F2 spawn `subl`. `niri validate` passes.
+- `keybindings.txt` header: title, `Source:` path → `etc/skel/.config/kiro-niri-noctalia/cfg/keybinds.kdl`, the stale
+  `Generated:` line dropped (same shape as kiro-niri-dms). The bindings below it are unchanged.
 - Only `/etc/skel` changes: existing users keep their own config.
 
 ### Files Modified
@@ -32,6 +36,7 @@
 - `etc/skel/.config/kiro-niri-noctalia/cfg/autostart.kdl`
 - `etc/skel/.config/kiro-niri-noctalia/cfg/keybinds.kdl`
 - `etc/skel/.config/kiro-niri-noctalia/scripts/keyboard-from-installer.sh` (new)
+- `etc/skel/.config/kiro-niri-noctalia/keybindings.txt`
 - `CHANGELOG.md`
 
 ## 2026.10.14
