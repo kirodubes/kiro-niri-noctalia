@@ -17,7 +17,8 @@
   `DISPLAY ":0"` from `environment {}`. niri 25.08+ starts xwayland-satellite on demand and exports `DISPLAY`
   (it took `:1` on the test box, where the autostarted `:0` copy could not bind). The `xwayland-satellite` depend stays,
   since niri needs the binary. On the test box VLC 3's Qt interface (X11-only) failed with `xcb_connection_has_error` on
-  `:0` and played the file fine with `DISPLAY=:1`.
+  `:0` and played the file fine with `DISPLAY=:1`. Confirmed by Erik on real metal: VLC launches after
+  upgrade + skell + re-login.
 - `cfg/keybinds.kdl`: the nine `spawn "variety" ...` binds copied from kiro-niri-dms, after the hardware keys. No chord
   collisions; `niri validate` passes. kiro-variety-config's `set_wallpaper_kiro` already calls
   `noctalia msg wallpaper-set` when noctalia runs. Tested in QEMU on the installed system (`variety --next` self-starts Variety and rotates) and by Erik on the live ISO (Alt + N).
