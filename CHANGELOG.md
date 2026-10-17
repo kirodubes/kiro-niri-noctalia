@@ -12,7 +12,7 @@
 ### Technical Details
 - `cfg/keybinds.kdl`: the nine `spawn "variety" ...` binds copied from kiro-niri-dms, after the hardware keys. No chord
   collisions; `niri validate` passes. kiro-variety-config's `set_wallpaper_kiro` already calls
-  `noctalia msg wallpaper-set` when noctalia runs. Tested live in QEMU: `variety --next` self-starts Variety and rotates.
+  `noctalia msg wallpaper-set` when noctalia runs. Tested in QEMU on the installed system (`variety --next` self-starts Variety and rotates) and by Erik on the live ISO (Alt + N).
 - `keybindings.txt`: new section 6b, same as kiro-niri-dms.
 - `cfg/keybinds.kdl`: `Mod+Shift+C` → `noctalia msg panel-toggle clipboard`, `Mod+Shift+N` →
   `noctalia msg panel-toggle control-center notifications` (noctalia v5 has no separate notifications panel; the
