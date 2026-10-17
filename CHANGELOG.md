@@ -8,8 +8,16 @@
   now drive Variety, which hands each wallpaper to noctalia.
 - **Super + Shift + C opens the clipboard history, Super + Shift + N the notification center**, as on
   kiro-niri-dms.
+- **X11 apps start again on an installed system.** VLC opened no window: the config pinned `DISPLAY=:0`, but
+  SDDM's greeter Xorg keeps `:0`, so every X11 app launched from noctalia or a terminal failed to connect. niri
+  now runs XWayland itself on a free display.
 
 ### Technical Details
+- `cfg/autostart.kdl`: dropped `spawn-sh-at-startup "xwayland-satellite :0"`; `cfg/misc.kdl`: dropped
+  `DISPLAY ":0"` from `environment {}`. niri 25.08+ starts xwayland-satellite on demand and exports `DISPLAY`
+  (it took `:1` on the test box, where the autostarted `:0` copy could not bind). The `xwayland-satellite` depend stays,
+  since niri needs the binary. On the test box VLC 3's Qt interface (X11-only) failed with `xcb_connection_has_error` on
+  `:0` and played the file fine with `DISPLAY=:1`.
 - `cfg/keybinds.kdl`: the nine `spawn "variety" ...` binds copied from kiro-niri-dms, after the hardware keys. No chord
   collisions; `niri validate` passes. kiro-variety-config's `set_wallpaper_kiro` already calls
   `noctalia msg wallpaper-set` when noctalia runs. Tested in QEMU on the installed system (`variety --next` self-starts Variety and rotates) and by Erik on the live ISO (Alt + N).
@@ -22,6 +30,8 @@
 ### Files Modified
 - `etc/skel/.config/kiro-niri-noctalia/cfg/keybinds.kdl`
 - `etc/skel/.config/kiro-niri-noctalia/keybindings.txt`
+- `etc/skel/.config/kiro-niri-noctalia/cfg/autostart.kdl`
+- `etc/skel/.config/kiro-niri-noctalia/cfg/misc.kdl`
 - `CHANGELOG.md`
 
 ## 2026.10.16
