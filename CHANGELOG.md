@@ -1,5 +1,24 @@
 # Changelog
 
+## 2026.10.17
+
+### What Changed
+- **Variety wallpaper keys work.** Alt + N did nothing: this edition never got the Variety block that kiro-niri-dms
+  has. Alt + N / Right (next), P / Left (previous), T (trash), F (favorite), Up (pause), Down (resume) and W (selector)
+  now drive Variety, which hands each wallpaper to noctalia.
+
+### Technical Details
+- `cfg/keybinds.kdl`: the nine `spawn "variety" ...` binds copied from kiro-niri-dms, after the hardware keys. No chord
+  collisions; `niri validate` passes. kiro-variety-config's `set_wallpaper_kiro` already calls
+  `noctalia msg wallpaper-set` when noctalia runs. Tested live in QEMU: `variety --next` self-starts Variety and rotates.
+- `keybindings.txt`: new section 6b, same as kiro-niri-dms.
+- Only `/etc/skel` changes: existing users keep their own config.
+
+### Files Modified
+- `etc/skel/.config/kiro-niri-noctalia/cfg/keybinds.kdl`
+- `etc/skel/.config/kiro-niri-noctalia/keybindings.txt`
+- `CHANGELOG.md`
+
 ## 2026.10.16
 
 ### What Changed
