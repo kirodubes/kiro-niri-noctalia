@@ -6,13 +6,18 @@
 - **Variety wallpaper keys work.** Alt + N did nothing: this edition never got the Variety block that kiro-niri-dms
   has. Alt + N / Right (next), P / Left (previous), T (trash), F (favorite), Up (pause), Down (resume) and W (selector)
   now drive Variety, which hands each wallpaper to noctalia.
+- **Super + Shift + C opens the clipboard history, Super + Shift + N the notification center**, as on
+  kiro-niri-dms.
 
 ### Technical Details
 - `cfg/keybinds.kdl`: the nine `spawn "variety" ...` binds copied from kiro-niri-dms, after the hardware keys. No chord
   collisions; `niri validate` passes. kiro-variety-config's `set_wallpaper_kiro` already calls
   `noctalia msg wallpaper-set` when noctalia runs. Tested live in QEMU: `variety --next` self-starts Variety and rotates.
 - `keybindings.txt`: new section 6b, same as kiro-niri-dms.
-- Only `/etc/skel` changes: existing users keep their own config.
+- `cfg/keybinds.kdl`: `Mod+Shift+C` → `noctalia msg panel-toggle clipboard`, `Mod+Shift+N` →
+  `noctalia msg panel-toggle control-center notifications` (noctalia v5 has no separate notifications panel; the
+  control center opens on its Notifications tab). Checked on real metal with screenshots; both added to section 1
+  of `keybindings.txt`.
 
 ### Files Modified
 - `etc/skel/.config/kiro-niri-noctalia/cfg/keybinds.kdl`

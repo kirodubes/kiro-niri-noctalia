@@ -17,6 +17,8 @@
   super + S               Control center (noctalia)
   super + shift + S       Settings (noctalia)
   super + shift + W       Wallpaper selector (noctalia)
+  super + shift + C       Clipboard history (noctalia)
+  super + shift + N       Notification center (noctalia)
   ctrl + alt + A          Alacritty tweak tool
   ctrl + alt + B          Brave
   ctrl + alt + C          Chromium

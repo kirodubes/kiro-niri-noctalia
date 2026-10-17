@@ -26,6 +26,8 @@ binds {
     Mod+Ctrl+S                          hotkey-overlay-title="Show keybindings: kiro-keybindings" { spawn "kiro-keybindings"; }
     Mod+Alt+L                           hotkey-overlay-title="Lock screen: noctalia" { spawn-sh "noctalia msg session lock"; }
     Mod+Shift+W                         hotkey-overlay-title="Wallpaper selector: noctalia" { spawn-sh "noctalia msg panel-toggle wallpaper"; }
+    Mod+Shift+C                         hotkey-overlay-title="Clipboard history: noctalia" { spawn-sh "noctalia msg panel-toggle clipboard"; }
+    Mod+Shift+N                         hotkey-overlay-title="Notification center: noctalia" { spawn-sh "noctalia msg panel-toggle control-center notifications"; }
 
     // ─── CTRL+ALT app launchers (Kiro scheme) ───
     Ctrl+Alt+A                          hotkey-overlay-title="Alacritty tweak tool" { spawn "alacritty-tweak-tool"; }
