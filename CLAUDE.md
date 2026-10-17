@@ -26,8 +26,7 @@ via `nemesis_repo`. Full research + decisions live in the internal `Kiro-HQ/Kiro
   `move-column-*`, consume/expel) **kept verbatim**; Kiro's app scheme layered on a
   collision-free space: CTRL+ALT launchers + SUPER+F1..F12 + `kiro-keybindings` on SUPER+CTRL+S.
 - `keybindings.txt` mirrors `cfg/keybinds.kdl` — keep them in lockstep; a duplicate-chord scan
-  must pass. (`kiro-keybindings` and `/kiro-create-keybindings` still need **niri** added to
-  their WM-detection table — known gap, same one Hyprland hit.)
+  must pass. `kiro-keybindings` (SUPER+CTRL+S) works on niri — confirmed by Erik 2026-10-17.
 - Mod = Super. Belgian `be,us` layout (matches the rest of the Kiro line).
 
 ## Patterns / gotchas
