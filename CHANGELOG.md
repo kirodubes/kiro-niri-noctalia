@@ -1,5 +1,16 @@
 # Changelog
 
+## 2026.10.23
+
+### What Changed
+- **Keyboard layout switch moves to both Ctrl keys; Alt+Shift+N/P/T/F change the wallpaper.** With two layouts, Alt+Shift switched the layout the moment both keys were down, so Alt+Shift+N switched the layout and changed the wallpaper too. The layout switch is now left Ctrl + right Ctrl, the same on every KiroTux edition (kiro-wayfire, kiro-hyprland-dms and kiro-niri-dms got it first). Alt+Shift+N/P/T/F run the same Variety commands as Alt+N/P/T/F, so the keys match the editions where Alt+Shift+N recolours. New installs only. Existing users: change `grp:alt_shift_toggle` to `grp:ctrls_toggle` in `~/.config/kiro-niri-noctalia/cfg/input.kdl` and copy the four `Alt+Shift+` binds from `/etc/skel`.
+
+### Technical Details
+- `options "grp:ctrls_toggle,compose:caps"` in `cfg/input.kdl`; four `Alt+Shift+` Variety binds after the Variety block; keybindings.txt lists them and Ctrl+Ctrl. Config checked (Lua syntax / `niri validate`), duplicate-chord scan clean for the new keys. KiroTux Premium's Keyboard page reads the switch keys from the edition, so it shows Ctrl+Ctrl here without a change.
+
+### Files Modified
+- `etc/skel/.config/kiro-niri-noctalia/cfg/input.kdl`, `etc/skel/.config/kiro-niri-noctalia/cfg/keybinds.kdl`, `etc/skel/.config/kiro-niri-noctalia/keybindings.txt`
+
 ## 2026.10.17
 
 ### What Changed
